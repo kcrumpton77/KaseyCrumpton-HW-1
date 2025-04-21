@@ -137,3 +137,14 @@
 
 -- The SQL statement for the cast output
 -- TODO!
+
+
+-- Starting Homework From Here
+DROP TABLE Movies;
+CREATE TABLE Movies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Title TEXT,
+    Release Year INTEGER,
+    MPAA Rating TEXT,
+    Studio INTEGER
+);
