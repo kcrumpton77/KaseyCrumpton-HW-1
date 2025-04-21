@@ -140,11 +140,32 @@
 
 
 -- Starting Homework From Here
-DROP TABLE Movies;
+DROP TABLE IF EXISTS Movies;
+DROP TABLE IF EXISTS Actors;
+DROP TABLE IF EXISTS Studios;
+DROP TABLE IF EXISTS Roles;
+
 CREATE TABLE Movies (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     Title TEXT,
     Release Year INTEGER,
     MPAA Rating TEXT,
-    Studio INTEGER
+    Studio_id INTEGER
+);
+
+CREATE TABLE Studios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT
+);
+
+CREATE TABLE Actors (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT
+);
+
+CREATE TABLE Roles (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    movie_id INTEGER,
+    actor_id INTEGER,
+    character_played TEXT
 );
