@@ -148,8 +148,8 @@ DROP TABLE IF EXISTS Roles;
 CREATE TABLE Movies (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     Title TEXT,
-    Release Year INTEGER,
-    MPAA Rating TEXT,
+    Release_Year INTEGER,
+    MPAA_Rating TEXT,
     Studio_id INTEGER
 );
 
@@ -169,3 +169,46 @@ CREATE TABLE Roles (
     actor_id INTEGER,
     character_played TEXT
 );
+
+INSERT INTO Studios (Name) 
+    VALUES 
+    ('Warner Bros.');
+
+INSERT INTO Movies (Title, Release_Year, MPAA_Rating, Studio_id) 
+    VALUES 
+    ('Batman Begins', '2005', 'PG_13', 1), 
+    ('The Dark Knight','2008', 'PG_13', 1), 
+    ('The Dark Knight Rises', '2012', 'PG_13', 1);
+
+INSERT INTO Actors (Name) 
+    VALUES
+    ('Christian Bale'),
+    ('Michael Caine'),
+    ('Liam Neeson'),
+    ('Katie Holmes'),
+    ('Gary Oldman'),
+    ('Heath Ledger'),
+    ('Aaron Eckhart'),
+    ('Maggie Gyllenhaal'),
+    ('Tom Hardy'),
+    ('Joseph Gordon-Levitt'),
+    ('Anne Hathaway');
+
+INSERT INTO Roles (movie_id, actor_id, character_played)
+    VALUES
+    (1, 1, 'Bruce Wayne'),
+    (1, 2, 'Alfred'),
+    (1, 3, 'Ras Al Ghul'),
+    (1, 4, 'Rachel Dawes'),
+    (1, 5, 'Commissioner Gordon'),
+    (2, 1, 'Bruce Wayne'),
+    (2, 6, 'Joker'),
+    (2, 7, 'Harvey Dent'),
+    (2, 2, 'Alfred'),
+    (2, 8, 'Rachel Dawes'),
+    (3, 1, 'Bruce Wayne'),
+    (3, 5, 'Commissioner Gordon'),
+    (3, 9, 'Bane'),
+    (3, 10, 'John Blake'),
+    (3, 11, 'Selina Kyle');
+
