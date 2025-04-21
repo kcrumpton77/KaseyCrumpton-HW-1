@@ -212,3 +212,4 @@ INSERT INTO Roles (movie_id, actor_id, character_played)
     (3, 10, 'John Blake'),
     (3, 11, 'Selina Kyle');
 
+DROP TABLE IF EXISTS Stuidos;
