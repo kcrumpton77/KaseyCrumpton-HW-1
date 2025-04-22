@@ -121,8 +121,6 @@
 -- TODO!
 
 -- Prints a header for the movies output
-.print "Movies"
-.print "======"
 .print ""
 
 -- The SQL statement for the movies output
@@ -130,8 +128,6 @@
 
 -- Prints a header for the cast output
 .print ""
-.print "Top Cast"
-.print "========"
 .print ""
 
 
@@ -141,9 +137,13 @@
 
 -- Starting Homework From Here
 DROP TABLE IF EXISTS Movies;
+DROP TABLE IF EXISTS Top_Cast;
 DROP TABLE IF EXISTS Actors;
 DROP TABLE IF EXISTS Studios;
 DROP TABLE IF EXISTS Roles;
+
+.headers off
+.mode column
 
 CREATE TABLE Movies (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -165,9 +165,9 @@ CREATE TABLE Actors (
 
 CREATE TABLE Roles (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    movie_id INTEGER,
-    actor_id INTEGER,
-    character_played TEXT
+    Movie_id INTEGER,
+    Actor_id INTEGER,
+    Character_Played TEXT
 );
 
 INSERT INTO Studios (Name) 
@@ -213,3 +213,32 @@ INSERT INTO Roles (movie_id, actor_id, character_played)
     (3, 11, 'Selina Kyle');
 
 DROP TABLE IF EXISTS Stuidos;
+
+.print "Batman Movies"
+.print "=========="
+.print ""
+
+SELECT Movies.Title, Movies.Release_Year, Movies.MPAA_Rating, Studios.Name AS Studio
+FROM Movies
+INNER JOIN Studios ON Movies.Studio_id = Studios.id;
+
+.print ""
+.print "Movies By Studio"
+.print "=========="
+.print ""
+
+SELECT Movies.Title, Movies.Release_Year, Movies.MPAA_Rating, Studios.Name AS Studio
+FROM Movies
+INNER JOIN Studios ON Movies.Studio_id = Studios.id
+WHERE Studios.Name = 'Warner Bros.';
+
+.print ""
+.print "Roles By Movie"
+.print "=========="
+.print ""
+
+SELECT Movies.Title, Actors.Name AS Actor, Roles.Character_Played
+FROM Roles
+INNER JOIN Movies ON Roles.Movie_id = Movies.id
+INNER JOIN Actors ON Roles.Actor_id = Actors.id
+ORDER BY Movies.Title, Roles.id;
